@@ -16,7 +16,6 @@ const Checkout = () => {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
-    email: "",
     address: "",
   });
 
@@ -32,7 +31,6 @@ const Checkout = () => {
     message += `*Customer Details:*\n`;
     message += `Name: ${formData.name}\n`;
     message += `Phone: ${formData.phone}\n`;
-    message += `Email: ${formData.email}\n`;
     message += `Address: ${formData.address}\n\n`;
     message += `*Order Items:*\n`;
     
@@ -40,10 +38,10 @@ const Checkout = () => {
       message += `\n${index + 1}. ${item.name}\n`;
       message += `   Size: ${item.selectedSize} | Color: ${item.selectedColor}\n`;
       message += `   Quantity: ${item.quantity}\n`;
-      message += `   Price: $${(item.price * item.quantity).toFixed(2)}\n`;
+      message += `   Price: ₦${(item.price * item.quantity).toLocaleString()}\n`;
     });
 
-    message += `\n*Total: $${getCartTotal().toFixed(2)}*`;
+    message += `\n*Total: ₦${getCartTotal().toLocaleString()}*`;
     
     return encodeURIComponent(message);
   };
@@ -52,15 +50,8 @@ const Checkout = () => {
     e.preventDefault();
 
     // Validate form
-    if (!formData.name || !formData.phone || !formData.email || !formData.address) {
+    if (!formData.name || !formData.phone || !formData.address) {
       toast.error("Please fill in all fields");
-      return;
-    }
-
-    // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      toast.error("Please enter a valid email address");
       return;
     }
 
@@ -147,19 +138,6 @@ const Checkout = () => {
                   </div>
 
                   <div>
-                    <Label htmlFor="email">Email Address *</Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      placeholder="john@example.com"
-                      required
-                    />
-                  </div>
-
-                  <div>
                     <Label htmlFor="address">Delivery Address *</Label>
                     <Textarea
                       id="address"
@@ -202,7 +180,7 @@ const Checkout = () => {
                         <p className="text-xs text-muted-foreground">
                           {item.selectedSize} | {item.selectedColor} | Qty: {item.quantity}
                         </p>
-                        <p className="font-medium">${(item.price * item.quantity).toFixed(2)}</p>
+                        <p className="font-medium">₦{(item.price * item.quantity).toLocaleString()}</p>
                       </div>
                     </div>
                   ))}
@@ -211,11 +189,11 @@ const Checkout = () => {
                 <div className="space-y-2 pt-4 border-t border-border">
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Subtotal</span>
-                    <span className="font-medium">${getCartTotal().toFixed(2)}</span>
+                    <span className="font-medium">₦{getCartTotal().toLocaleString()}</span>
                   </div>
                   <div className="flex justify-between text-xl font-bold pt-2">
                     <span>Total</span>
-                    <span>${getCartTotal().toFixed(2)}</span>
+                    <span>₦{getCartTotal().toLocaleString()}</span>
                   </div>
                 </div>
               </div>

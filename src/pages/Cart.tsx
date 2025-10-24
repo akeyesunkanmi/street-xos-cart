@@ -64,7 +64,7 @@ const Cart = () => {
                     <p className="text-sm text-muted-foreground">
                       Size: {item.selectedSize} | Color: {item.selectedColor}
                     </p>
-                    <p className="font-bold">${item.price}</p>
+                    <p className="font-bold">₦{item.price.toLocaleString()}</p>
                   </div>
 
                   <div className="flex flex-col items-end justify-between">
@@ -117,7 +117,7 @@ const Cart = () => {
                 <div className="space-y-2">
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Subtotal</span>
-                    <span className="font-medium">${getCartTotal().toFixed(2)}</span>
+                    <span className="font-medium">₦{getCartTotal().toLocaleString()}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Shipping</span>
@@ -128,7 +128,7 @@ const Cart = () => {
                 <div className="border-t border-border pt-4">
                   <div className="flex justify-between text-xl font-bold">
                     <span>Total</span>
-                    <span>${getCartTotal().toFixed(2)}</span>
+                    <span>₦{getCartTotal().toLocaleString()}</span>
                   </div>
                 </div>
 

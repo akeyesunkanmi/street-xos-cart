@@ -68,13 +68,10 @@ const ProductDetail = () => {
             {/* Product Info */}
             <div className="space-y-6">
               <div>
-                <p className="text-sm text-muted-foreground uppercase tracking-wide mb-2">
-                  {product.category}
-                </p>
                 <h1 className="text-4xl md:text-5xl font-black uppercase mb-4">
                   {product.name}
                 </h1>
-                <p className="text-3xl font-bold">${product.price}</p>
+                <p className="text-3xl font-bold">₦{product.price.toLocaleString()}</p>
               </div>
 
               <p className="text-muted-foreground">{product.description}</p>

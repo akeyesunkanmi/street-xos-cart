@@ -22,12 +22,8 @@ const ProductCard = ({ product }: ProductCardProps) => {
         <h3 className="font-bold text-sm uppercase tracking-wide truncate">
           {product.name}
         </h3>
-        <p className="text-muted-foreground text-xs line-clamp-2">
-          {product.description}
-        </p>
-        <div className="flex items-center justify-between">
-          <span className="font-bold text-lg">${product.price}</span>
-          <span className="text-xs text-muted-foreground">{product.category}</span>
+        <div>
+          <span className="font-bold text-lg">₦{product.price.toLocaleString()}</span>
         </div>
       </div>
     </Link>
