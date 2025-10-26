@@ -28,7 +28,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
           <span className="font-bold text-lg">₦{product.price.toLocaleString()}</span>
         </div>
         <Link to={`/product/${product.id}`}>
-          <Button variant="outline" className="w-full">
+          <Button variant="default" className="w-full">
             Select
           </Button>
         </Link>
