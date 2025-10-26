@@ -12,7 +12,7 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ background: "var(--gradient-hero)" }}>
       {/* Fading images background */}
-      <div className="absolute inset-0 opacity-10">
+      <div className="absolute inset-0 opacity-20">
         <div className="absolute inset-0 animate-[fadeInOut_8s_ease-in-out_infinite]">
           <img src={product1} alt="" className="w-full h-full object-cover grayscale" />
         </div>
