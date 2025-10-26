@@ -11,13 +11,13 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ background: "var(--gradient-hero)" }}>
-      {/* Moving images background */}
-      <div className="absolute inset-0 flex items-center justify-center opacity-10 overflow-hidden">
-        <div className="flex gap-8 animate-[scroll_20s_linear_infinite]">
-          <img src={product1} alt="" className="h-64 w-auto object-cover grayscale" />
-          <img src={product2} alt="" className="h-64 w-auto object-cover grayscale" />
-          <img src={product1} alt="" className="h-64 w-auto object-cover grayscale" />
-          <img src={product2} alt="" className="h-64 w-auto object-cover grayscale" />
+      {/* Fading images background */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 animate-[fadeInOut_8s_ease-in-out_infinite]">
+          <img src={product1} alt="" className="w-full h-full object-cover grayscale" />
+        </div>
+        <div className="absolute inset-0 animate-[fadeInOut_8s_ease-in-out_infinite_4s]">
+          <img src={product2} alt="" className="w-full h-full object-cover grayscale" />
         </div>
       </div>
       
@@ -47,22 +47,24 @@ const Hero = () => {
           </Button>
         </div>
 
-        <button
-          onClick={scrollToProducts}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce"
-          aria-label="Scroll to products"
-        >
-          <ArrowDown className="h-8 w-8" />
-        </button>
+        <div className="absolute bottom-12 left-0 right-0 flex justify-center">
+          <button
+            onClick={scrollToProducts}
+            className="animate-bounce"
+            aria-label="Scroll to products"
+          >
+            <ArrowDown className="h-8 w-8" />
+          </button>
+        </div>
       </div>
 
       <style>{`
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
+        @keyframes fadeInOut {
+          0%, 100% {
+            opacity: 0;
           }
-          100% {
-            transform: translateX(-50%);
+          50% {
+            opacity: 1;
           }
         }
       `}</style>
