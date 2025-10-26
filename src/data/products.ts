@@ -9,6 +9,7 @@ export const products: Product[] = [
     price: 45,
     description: "Iconic XO Savage graphic tee featuring bold red box design. Premium quality streetwear essential.",
     image: product1,
+    images: [product1, product2, product1],
     sizes: ["S", "M", "L", "XL", "XXL"],
     colors: ["Black", "Charcoal"],
     category: "T-Shirts"

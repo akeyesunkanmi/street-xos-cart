@@ -6,6 +6,13 @@ import { useCart } from "@/contexts/CartContext";
 import { toast } from "sonner";
 import { ArrowLeft } from "lucide-react";
 import Header from "@/components/Header";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -57,12 +64,34 @@ const ProductDetail = () => {
 
           <div className="grid md:grid-cols-2 gap-12">
             {/* Product Image */}
-            <div className="aspect-square bg-muted rounded-sm overflow-hidden">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-full object-cover"
-              />
+            <div className="relative">
+              {product.images && product.images.length > 1 ? (
+                <Carousel className="w-full">
+                  <CarouselContent>
+                    {product.images.map((image, index) => (
+                      <CarouselItem key={index}>
+                        <div className="aspect-square bg-muted rounded-sm overflow-hidden">
+                          <img
+                            src={image}
+                            alt={`${product.name} - Image ${index + 1}`}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious className="left-4" />
+                  <CarouselNext className="right-4" />
+                </Carousel>
+              ) : (
+                <div className="aspect-square bg-muted rounded-sm overflow-hidden">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              )}
             </div>
 
             {/* Product Info */}
