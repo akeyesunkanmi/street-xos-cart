@@ -13,10 +13,10 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ background: "var(--gradient-hero)" }}>
       {/* Fading images background */}
       <div className="absolute inset-0 opacity-30">
-        <div className="absolute inset-0 animate-[fadeInOut_8s_ease-in-out_infinite]">
+        <div className="absolute inset-0 animate-[fadeSwipe_8s_ease-in-out_infinite]">
           <img src={product1} alt="" className="w-full h-full object-cover grayscale" />
         </div>
-        <div className="absolute inset-0 animate-[fadeInOut_8s_ease-in-out_infinite_4s]">
+        <div className="absolute inset-0 animate-[fadeSwipe_8s_ease-in-out_infinite_4s]">
           <img src={product2} alt="" className="w-full h-full object-cover grayscale" />
         </div>
       </div>
@@ -59,12 +59,22 @@ const Hero = () => {
       </div>
 
       <style>{`
-        @keyframes fadeInOut {
-          0%, 100% {
+        @keyframes fadeSwipe {
+          0% {
             opacity: 0;
+            transform: translateX(100%);
           }
-          50% {
+          25% {
             opacity: 1;
+            transform: translateX(0);
+          }
+          75% {
+            opacity: 1;
+            transform: translateX(0);
+          }
+          100% {
+            opacity: 0;
+            transform: translateX(-100%);
           }
         }
       `}</style>
